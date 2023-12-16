@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include('./head.ejs') %>
+    <title><%= article.title %> - NaijaDailyBuzz</title>
+  </head>
+  <body>
+    <header><%- include('./header.ejs') %></header>
+    <main>
+      <br />
+      <div class="flex-col">
+        <h2>
+          <%= article.title %>
+          <a href="<%= article.link %>" class="button-small round"
+            ><%= article.source_id %></a
+          >
+          <span class="button-small round"
+            ><%= article.pubDate.toString().substr(0, 15) %></span
+          >
+        </h2>
+        <br />
+        <div class="flex-col">
+          <div class="flex-row"></div>
+        </div>
+        <img
+          src="<%= article.image %>"
+          alt="<%= article.title %>"
+          class="image-large"
+        />
+        <div>
+          <p class="padding-mid"><%= article.content %></p>
+        </div>
+        <div class="padding-mid">
+          <% for( let category of article.category ) { %>
+          <span class="button-small round"
+            ><a style="color: #eee" href="/articles/<%= category %>"
+              ><%= category %></a
+            ></span
+          >
+          <% } %> <% for( let keyword of article.keywords ) { %>
+          <span class="button-small round"
+            ><a style="color: #eee" href="/articles/<%= keyword %>"
+              ><%= keyword %></a
+            ></span
+          >
+          <% } %>
+        </div>
+      </div>
+    </main>
+    <br />
+    <hr />
+    <br />
+    <section><%- include('./subscribe-form') %></section>
+    <footer><%- include('./footer.ejs') %></footer>
+  </body>
+</html>

@@ -1,0 +1,122 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+body {
+    width: 100vw;
+    min-height: 100vh;
+}
+
+.logo {
+    color: black;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    border-bottom: 2px solid black;
+}
+
+.center {
+    text-align: center;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    width: 100vw;
+    padding: 15px;
+}
+
+.navigation li {
+    margin: 5px;
+}
+
+.button {
+    background-color: black;
+    color: #eee;
+    padding: 10px;
+}
+
+.button:hover {
+    text-decoration: underline;
+}
+
+.button-small {
+    font-size: 10px;
+    background-color: black;
+    color: #eee;
+    padding: 5px 10px;
+}
+
+.round {
+    border-radius: 25px;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.space-bet {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.border-thin-black {
+    border: 1px solid black;
+}
+
+.subscribe-form {
+    margin: 10px;
+    padding: 20px;
+}
+
+.input {
+    border: 1px solid black;
+}
+
+.input-text {
+    padding: 10px 10px;
+}
+
+main {
+    margin: auto 4px;
+}
+
+.padding-mid {
+    padding: 30px;
+}
+
+.image-mid {
+    width:100px;
+    height: auto;
+}
+
+.image-large {
+    width: 95%;
+    height: auto;
+}
+
+.footer {
+    max-width: auto;
+}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include('./head.ejs') %>
+    <title><%= error %> - <%= message %></title>
+    <style>
+    </style>
+  </head>
+  <body class="flex-col space-bet">
+    <header><%- include('./header.ejs') %></header>
+    <div>
+        <h2 class="center"><%= message %></h2>
+        <p class="center"><%= error %></p>
+    </div>
+    <footer><%- include('./footer.ejs') %></footer>
+  </body>
+</html>

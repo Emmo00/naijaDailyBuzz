@@ -1,0 +1,46 @@
+<html>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+        'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+    }
+    h1 {
+      color: black;
+    }
+    div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    a {
+      text-decoration: none;
+      background-color: turquoise;
+      color: #eee;
+      text-transform: capitalize;
+      padding: 30px;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+  <body>
+    <h1>NaijaDailyBuzz</h1>
+    <div>
+      <p>Welcome to NaijaDailyBuzz newsletter</p>
+      <a href="<%= process.env.DOMAIN_NAME_URL %>/verify?token=<%= token %>"
+        ><b> verify email </b></a
+      >
+    </div>
+  </body>
+</html>

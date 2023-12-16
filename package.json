@@ -1,0 +1,52 @@
+{
+  "name": "naijaDailyBuzz",
+  "version": "1.0.0",
+  "description": "Nigerian news newsletter",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "start-server": "nodemon --exec babel-node --presets @babel/preset-env ./server.js",
+    "start-worker": "nodemon --exec babel-node --presets @babel/preset-env ./services.js",
+    "start-roobie": "echo \"Error starting Roobie server\"",
+    "dev": "nodemon --exec babel-node --presets @babel/preset-env"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Emmo00/mailunn.com.git"
+  },
+  "keywords": [
+    "Nigerian",
+    "newsletter",
+    "update",
+    "news"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Emmo00/mailunn.com/issues"
+  },
+  "homepage": "https://github.com/Emmo00/mailunn.com#readme",
+  "dependencies": {
+    "@babel/cli": "^7.8.0",
+    "@babel/core": "^7.8.0",
+    "@babel/node": "^7.8.0",
+    "@babel/preset-env": "^7.8.2",
+    "@babel/register": "^7.8.0",
+    "axios": "^1.6.2",
+    "bull": "^4.11.5",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "image-resolver": "^0.6.1",
+    "image-thumbnail": "^1.0.10",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.0.3",
+    "node-cron": "^3.0.3",
+    "nodemailer": "^6.9.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include('./head.ejs') %>
+    <title>NaijaDailyBuzz - HOME</title>
+  </head>
+  <body>
+    <header><%- include('./header.ejs') %></header>
+    <main>
+      <br />
+      <div class="headlines">
+        <h2>Todays Headlines</h2>
+        <% for(let article of todayArticles) { %>
+        <br />
+        <div class="headline-card flex-row">
+          <img
+            class="image image-mid"
+            src="<%=  article.image %>"
+            alt=" <%= article.title %>"
+          />
+          <div class="flex-col">
+            <h3>
+              <a href="/news/<%= article.title %>"><%= article.title %></a>
+            </h3>
+            <p>
+              <%= article.content.substr(0, 80) + '...' %>
+              <a href="/news/<%= article.title %>">Read more</a>
+            </p>
+          </div>
+        </div>
+        <% } %>
+        <br />
+        <br />
+        <div class="center">
+          <% if (page > 0) { %>
+          <a href="/home?page=<%= page-1 %>" class="button">Previous</a>
+          <% } %>
+          <% if (!done) { %>
+          <a href="/home?page=<%= page+1 %>" class="button">Next</a>
+          <% } %>
+        </div>
+        <br />
+        <br />
+      </div>
+    </main>
+    <section><%- include('./subscribe-form') %></section>
+    <footer><%- include('./footer.ejs') %></footer>
+  </body>
+</html>
