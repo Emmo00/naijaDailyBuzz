@@ -1,5 +1,5 @@
 import Subscriber from '../models/subscriber';
-import { jobQueues } from '../services';
+import jobQueues from '../queue';
 import { decodeToken } from '../utils/token';
 
 export default class SubscriptionsController {

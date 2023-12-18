@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Article from '../models/article';
-import { jobQueues } from '../services';
+import jobQueues from '../queue';
 
 export default {
   name: 'get-news',
