@@ -10,22 +10,31 @@ const welcomeMailTemplate = fs
 export default {
   name: 'welcome-mail',
   async handle({ data }) {
-    return console.log('welcome-mail, ', data);
-    const token = generateWelcomeToken(data._id);
-    transporter.sendMail({
-      from: process.env.MAIL_UPDATE_EMAIL,
-      to: data.email,
-      subject: 'Welcome to NaijaDailyBuzz newsletter',
-      html: ejs.render(welcomeMailTemplate, { token }),
-      list: {
-        help: process.env.MAIL_HELP_MAIL,
-        unsubscribe: `${
-          process.env.DOMAIN_NAME_URL
-        }/unsubscribe?token=${generateUnsubscribeToken(data.id)}`,
-        subscribe: process.env.DOMAIN_NAME_URL,
+    console.log('[info] welcome-mail, ', data);
+    const token = generateWelcomeToken(data.subscriber._id);
+    transporter.sendMail(
+      {
+        from: process.env.MAIL_UPDATE_EMAIL,
+        to: data.subscriber.email,
+        subject: 'Welcome to NaijaDailyBuzz newsletter',
+        html: ejs.render(welcomeMailTemplate, { token }),
+        list: {
+          help: process.env.MAIL_HELP_EMAIL,
+          unsubscribe: `${
+            process.env.DOMAIN_NAME_URL
+          }/unsubscribe?token=${generateUnsubscribeToken(data.subscriber._id)}`,
+          subscribe: process.env.DOMAIN_NAME_URL,
+        },
       },
-    });
-    console.log('welcome mail sent to ', data.email);
+      function (error, info) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Welcome Email sent: ' + info.response);
+          // do something useful
+        }
+      }
+    );
   },
   options: { lifo: true, priority: 1 },
 };

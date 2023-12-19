@@ -1,3 +1,4 @@
+require('dotenv').config();
 import jwt from 'jsonwebtoken';
 
 const secret = process.env.SECRET;
@@ -6,24 +7,16 @@ function generateWelcomeToken(subscriberId) {
   const payload = {
     subscriberId,
   };
-  return jwt.sign(
-    payload,
-    secret,
-    { algorithm: 'HS256' },
-    { expiresIn: `${60 * 20}` /* 20 minutes */ }
-  );
+  return jwt.sign(payload, secret, {
+    algorithm: 'HS256',
+  });
 }
 
 function generateUnsubscribeToken(subscriberId) {
   const payload = {
     subscriberId,
   };
-  return jwt.sign(
-    payload,
-    secret,
-    { algorithm: 'HS256' },
-    { expiresIn: '7 days' }
-  );
+  return jwt.sign(payload, secret, { algorithm: 'HS256' });
 }
 
 function decodeToken(token) {
@@ -31,12 +24,9 @@ function decodeToken(token) {
     const payload = jwt.verify(token, secret);
     return payload;
   } catch (err) {
+    console.log('err', err);
     return null;
   }
 }
 
-export {
-  generateWelcomeToken,
-  generateUnsubscribeToken,
-  decodeToken,
-};
+export { generateWelcomeToken, generateUnsubscribeToken, decodeToken };

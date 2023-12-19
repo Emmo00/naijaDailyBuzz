@@ -1,7 +1,6 @@
 import Queue from 'bull';
 import * as jobs from './jobs';
 
-console.log('hi')
 const queues = Object.values(jobs).map((job) => ({
   bull: new Queue(job.name),
   name: job.name,

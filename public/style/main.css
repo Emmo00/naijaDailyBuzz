@@ -86,6 +86,10 @@ a:hover {
     border: 1px solid black;
 }
 
+.content {
+    text-align: justify;
+}
+
 .subscribe-form {
     margin: 10px;
     padding: 20px;
@@ -110,11 +114,18 @@ main {
 .image-mid {
     width:100px;
     height: auto;
+    max-height: 90px;
+    object-fit: cover;
 }
 
 .image-large {
     width: 95%;
     height: auto;
+    object-fit: cover;
+}
+
+.headline-card {
+    gap: 15px;
 }
 
 .footer {

@@ -45,10 +45,10 @@
         alt="<%= article.title %>"
       />
       <div class="flex-col">
-        <h3><a href="/news/<%= article.title %>"><%= article.title %></a></h3>
+        <h3><a href="<%= process.env.DOMAIN_NAME_URL %>/news/<%= article.title %>"><%= article.title %></a></h3>
         <p>
           <%= article.content.substr(0, 80) + '...' %>
-          <a href="/news/<%= article.title %>">Read more</a>
+          <a href="<%= process.env.DOMAIN_NAME_URL %>/news/<%= article.title %>">Read more</a>
         </p>
       </div>
     </div>

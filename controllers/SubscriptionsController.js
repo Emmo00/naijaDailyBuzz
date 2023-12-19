@@ -2,10 +2,11 @@ import Subscriber from '../models/subscriber';
 import jobQueues from '../queue';
 import { decodeToken } from '../utils/token';
 
+const secret = process.env.SECRET
+
 export default class SubscriptionsController {
   async postNew(req, res) {
     const { email } = req.body;
-    console.log(email);
 
     if (!email)
       return res
@@ -53,7 +54,7 @@ export default class SubscriptionsController {
         .status(401)
         .render('error', { error: 'Unauthorized', message: 'Token missing' });
 
-    const payload = decodeToken(token, secret);
+    const payload = decodeToken(token);
     if (!payload)
       return res
         .status(401)

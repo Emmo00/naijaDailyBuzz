@@ -1,21 +1,20 @@
+require('dotenv').config()
 import nodemailer from 'nodemailer';
-import path from 'path';
 
 const transporter = nodemailer.createTransport({
-  host: process.env.MAIL_HOST,
-  port: process.env.MAIL_PORT,
-  secure: true,
+  service: 'gmail',
+  // host: process.env.MAIL_HOST,
+
+  // port: process.env.MAIL_PORT,
+  // secure: true,
   auth: {
-    user: process.env.MAIL_USER,
-    pass: process.env.MAIL_PASS,
+    type: "OAuth2",
+    user: "nwaforemmanuel005@gmail.com",
+    clientId: process.env.MAIL_CLIENTID,
+    clientSecret: process.env.MAIL_CLIENTSECRET,
+    refreshToken: process.env.MAIL_REFRESHTOKEN,
+    accessToken: process.env.MAIL_ACCESSTOKEN,
   },
 });
-
-const hbsOptions = {
-  viewEngine: 'handlebars',
-  viewPath: path.resolve('./templates/'),
-  extName: '.html',
-};
-
 
 export default transporter

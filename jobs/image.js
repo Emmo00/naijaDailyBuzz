@@ -49,8 +49,6 @@ export default {
     // get image from article
     const image = await getImageFile(article_link);
     // save image
-    const article = await Article.findById(data.id);
-    article.image = image;
-    await article.save();
+    await Article.findOneAndUpdate({ link: data.link }, { image });
   },
 };

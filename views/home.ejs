@@ -22,7 +22,7 @@
           />
           <div class="flex-col">
             <h3>
-              <a href="/news/<%= article.title %>"><%= article.title %></a>
+              <a href="/news/<%= article.title %>"><%= article.title.substr(0, 50) %></a>
             </h3>
             <p>
               <%= article.content.substr(0, 80) + '...' %>

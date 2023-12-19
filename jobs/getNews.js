@@ -5,21 +5,21 @@ import jobQueues from '../queue';
 export default {
   name: 'get-news',
   async handle() {
+    console.log('started getting news');
     const api_url = process.env.NEWS_API_URL;
     let page = null;
     while (true) {
-      const result = (
-        await axios.get(page ? `${api_url}&page=${page}` : api_url)
-      ).data;
+      const requestURL = page ? `${api_url}&page=${page}` : api_url;
+      console.log('[request]', requestURL)
+      const result = (await axios.get(requestURL)).data;
       if (result.status === 'error') return;
       const articles = result.results;
-      for (const article of articles) {
-        if (await Article.findById(article.article_id)) {
+        for (const article of articles) {
+        if (await Article.findOne({ title: article.title })) {
+          console.log('[info] done requesting for now')
           return;
         }
-        const id = article.article_id;
-        delete article.article_id;
-        const newArticle = await Article.create({ ...article, _id: id });
+        const newArticle = await Article.create(article);
         newArticle.save();
         jobQueues.add('image-link', newArticle);
       }

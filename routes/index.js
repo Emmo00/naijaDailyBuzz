@@ -12,9 +12,9 @@ router.get('/home', articlesController.home);
 
 router.post('/subscribe', subscriptionsController.postNew);
 
-router.delete('/unsubscribe', subscriptionsController.deleteOne);
+router.get('/unsubscribe', subscriptionsController.deleteOne);
 
-router.post('/subscriber/verify', subscriptionsController.postVerify);
+router.get('/subscriber/verify', subscriptionsController.postVerify);
 
 router.get('/news/:title', articlesController.getOne);
 
