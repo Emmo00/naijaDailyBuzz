@@ -1,8 +1,9 @@
 import Queue from 'bull';
 import * as jobs from './jobs';
 
+
 const queues = Object.values(jobs).map((job) => ({
-  bull: new Queue(job.name),
+  bull: new Queue(job.name, process.env.REDIS_URI),
   name: job.name,
   handle: job.handle,
   options: job.options,

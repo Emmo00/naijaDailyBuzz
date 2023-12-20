@@ -3,14 +3,13 @@ require('dotenv').config();
 import express from 'express';
 import mongoose from 'mongoose';
 import routes from './routes/index';
+import morgan from 'morgan';
 
 const port = process.env.PORT || 5000;
-const databaseHost = process.env.MONGODB_HOST || '127.0.0.1';
-const database = process.env.MONGODB_DB || 'naija_daily_buzz';
 
 const app = express();
 mongoose
-  .connect(`mongodb://${databaseHost}/${database}`)
+  .connect(process.env.MONGODB_URI)
   .then(() => {
     console.log('Connected to Mongodb server 💽');
   })
@@ -19,6 +18,7 @@ mongoose
   });
 
 app.set('view engine', 'ejs');
+app.use(morgan('combined'))
 app.use(express.static('./public'))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

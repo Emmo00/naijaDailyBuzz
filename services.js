@@ -11,7 +11,7 @@ const databaseHost = process.env.MONGODB_HOST || '127.0.0.1';
 const database = process.env.MONGODB_DB || 'naija_daily_buzz';
 
 mongoose
-  .connect(`mongodb://${databaseHost}/${database}`)
+  .connect(process.env.MONGODB_URI)
   .then(() => {
     console.log('Connected to Mongodb server from worker💽');
   })

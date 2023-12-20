@@ -5,7 +5,7 @@ import jobQueues from '../queue';
 export default {
   name: 'get-news',
   async handle() {
-    console.log('started getting news');
+    console.log('[info] started getting news');
     const api_url = process.env.NEWS_API_URL;
     let page = null;
     while (true) {

@@ -18,6 +18,7 @@ export default {
     const verifiedSubscribers = await Subscriber.find({ verified: true });
     for (const subscriber of verifiedSubscribers) {
       const token = generateUnsubscribeToken(subscriber._id);
+      console.log('[info] Update email ', subscriber.email)
       transporter.sendMail(
         {
           from: process.env.MAIL_UPDATE_EMAIL,

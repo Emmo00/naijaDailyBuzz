@@ -10,7 +10,7 @@ const welcomeMailTemplate = fs
 export default {
   name: 'welcome-mail',
   async handle({ data }) {
-    console.log('[info] welcome-mail, ', data);
+    console.log('[info] welcome-mail, ', data.subscriber.email);
     const token = generateWelcomeToken(data.subscriber._id);
     transporter.sendMail(
       {

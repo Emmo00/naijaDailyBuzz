@@ -13,7 +13,7 @@ function getImageLinkFromArticle(resolve, reject, article_link) {
 
   resolver.resolve(article_link, function (result) {
     if (result) {
-      console.log(result.image);
+      console.log('[image] ', result.image);
       resolve(result.image);
     } else {
       console.log('No image found');
