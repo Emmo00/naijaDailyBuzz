@@ -24,6 +24,8 @@
     "@babel/node": "^7.8.0",
     "@babel/preset-env": "^7.8.2",
     "@babel/register": "^7.8.0",
+    "@bull-board/api": "^5.10.2",
+    "@bull-board/express": "^5.10.2",
     "axios": "^1.6.2",
     "bull": "^4.11.5",
     "cors": "^2.8.5",

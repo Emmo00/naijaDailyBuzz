@@ -3,12 +3,36 @@ import jobQueues from "./queue";
 import cron from 'node-cron';
 import mongoose from 'mongoose';
 
+//
+const { createBullBoard } = require('@bull-board/api');
+const { BullAdapter } = require('@bull-board/api/bullAdapter');
+const { ExpressAdapter } = require('@bull-board/express');
+const express = require('express');
+
+const serverAdapter = new ExpressAdapter();
+serverAdapter.setBasePath('/admin/queues');
+
+const { addQueue, removeQueue, setQueues, replaceQueues } = createBullBoard({
+  queues: jobQueues.queues.map(queue => new BullAdapter(queue.bull)),
+  serverAdapter: serverAdapter,
+});
+
+const app = express();
+
+app.use('/admin/queues', serverAdapter.getRouter());
+
+// other configurations of your server
+
+app.listen(3000, () => {
+  console.log('Running on 3000...');
+  console.log('For the UI, open http://localhost:3000/admin/queues');
+  console.log('Make sure Redis is running on port 6379 by default');
+});
+//
+
 
 jobQueues.process();
 
-
-const databaseHost = process.env.MONGODB_HOST || '127.0.0.1';
-const database = process.env.MONGODB_DB || 'naija_daily_buzz';
 
 mongoose
   .connect(process.env.MONGODB_URI)
