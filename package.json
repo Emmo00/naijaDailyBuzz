@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "start-server": "nodemon --exec babel-node --presets @babel/preset-env ./server.js",
-    "start-worker": "nodemon --exec babel-node --presets @babel/preset-env ./services.js",
+    "start-server": "node --exec babel-node --presets @babel/preset-env ./server.js",
+    "start-worker": "node --exec babel-node --presets @babel/preset-env ./services.js",
     "dev": "nodemon --exec babel-node --presets @babel/preset-env"
   },
   "keywords": [

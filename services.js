@@ -49,7 +49,7 @@ mongoose
   });
 
 cron.schedule(
-  '*/30 * * * *',
+  '*/20 * * * *',
   async () => {
     console.log('[info] start getting news data');
     await jobQueues.add('get-news');
