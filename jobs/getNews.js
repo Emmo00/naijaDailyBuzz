@@ -12,9 +12,10 @@ export default {
       const result = (await axios.get(requestURL)).data;
       if (result.status === 'error') return;
       const articles = result.results;
-        for (const article of articles) {
+      for (const article of articles) {
+        if (!article.content) continue;
         if (await Article.findOne({ title: article.title })) {
-          return;
+          break;
         }
         const newArticle = await Article.create(article);
         newArticle.save();
